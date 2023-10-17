@@ -41,11 +41,13 @@ def save_diary():
     profilename = f'profile-{mytime}.{extension}'
     UPLOAD_DIRECTORY = os.path.join(app.root_path, 'static', 'profile')
     profile.save(os.path.join(UPLOAD_DIRECTORY, profilename))
+    time = today.strftime('%Y.%m.%d')
     doc = {
         'title':title_receive,
         'content':content_receive,
         'file':filename,
-        'profile':profilename
+        'profile':profilename,
+        'time':time
     }
     db.diary.insert_one(doc)
 
